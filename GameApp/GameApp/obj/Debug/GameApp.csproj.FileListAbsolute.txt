@@ -1,0 +1,17 @@
+C:\Users\gurin_9drx78b\game\GameApp\GameApp\bin\Debug\GameApp.exe.config
+C:\Users\gurin_9drx78b\game\GameApp\GameApp\bin\Debug\GameApp.exe
+C:\Users\gurin_9drx78b\game\GameApp\GameApp\bin\Debug\GameApp.pdb
+C:\Users\gurin_9drx78b\game\GameApp\GameApp\bin\Debug\EntityFramework.dll
+C:\Users\gurin_9drx78b\game\GameApp\GameApp\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\gurin_9drx78b\game\GameApp\GameApp\bin\Debug\System.Data.SQLite.dll
+C:\Users\gurin_9drx78b\game\GameApp\GameApp\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Users\gurin_9drx78b\game\GameApp\GameApp\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Users\gurin_9drx78b\game\GameApp\GameApp\bin\Debug\EntityFramework.xml
+C:\Users\gurin_9drx78b\game\GameApp\GameApp\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\gurin_9drx78b\game\GameApp\GameApp\bin\Debug\System.Data.SQLite.xml
+C:\Users\gurin_9drx78b\game\GameApp\GameApp\bin\Debug\System.Data.SQLite.dll.config
+C:\Users\gurin_9drx78b\game\GameApp\GameApp\obj\Debug\GameApp.csprojAssemblyReference.cache
+C:\Users\gurin_9drx78b\game\GameApp\GameApp\obj\Debug\GameApp.csproj.CoreCompileInputs.cache
+C:\Users\gurin_9drx78b\game\GameApp\GameApp\obj\Debug\GameApp.csproj.CopyComplete
+C:\Users\gurin_9drx78b\game\GameApp\GameApp\obj\Debug\GameApp.exe
+C:\Users\gurin_9drx78b\game\GameApp\GameApp\obj\Debug\GameApp.pdb
