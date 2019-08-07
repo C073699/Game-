@@ -12,8 +12,10 @@ namespace GameApp
     {
         static void Main(string[] args)
         {
-            new GameManager().Run();
+            // new GameManager().Run();
             // Database.Driver();
+            Database.SetupDatabase();
+            Database.ReadData(Database.sqlite_conn);
         }
     }
 
@@ -30,6 +32,7 @@ namespace GameApp
         }
         public void Run()
         {
+            Database.SetupDatabase();
             GameBoard.SetupMyGameBoard();
             this.CreatePlayers();
             int n = -1;
@@ -136,12 +139,13 @@ namespace GameApp
 
         public static void SetupMyGameBoard()
         {
+            string RecordToInsert;
             // create 100 Properties on The Board
             for (int i = 0; i < 100; i++)
             {
-                // MyGameBoard.Add(new Property());
                 // How can I put a INSERT statement to the GameBoard SQL Table here??
-                //Database.InsertData(what parameters to pass in??? );
+                RecordToInsert = "INSERT INTO GameBoard(PropertyID, OwnerName, PropertyValue) VALUES(1, 'null', 100)";
+                Database.InsertData(Database.sqlite_conn, RecordToInsert);
             }
         }
 
@@ -162,13 +166,18 @@ namespace GameApp
 
     class Database
     {
+        public static SQLiteConnection sqlite_conn;
+        public static void SetupDatabase()
+        {
+            sqlite_conn = CreateConnection();
+        }
+
         public static void Driver()
         {
-            SQLiteConnection sqlite_conn;
             sqlite_conn = CreateConnection();
-            CreateTable(sqlite_conn);
+            //CreateTable(sqlite_conn);
             //InsertData(sqlite_conn);
-            //ReadData(sqlite_conn);
+            ReadData(sqlite_conn);
         }
 
         static SQLiteConnection CreateConnection()
@@ -196,18 +205,11 @@ namespace GameApp
             sqlite_cmd.ExecuteNonQuery();
         }
 
-        public static void InsertData(SQLiteConnection conn)
+        public static void InsertData(SQLiteConnection conn, string sqlStatement)
         {
             SQLiteCommand sqlite_cmd;
             sqlite_cmd = conn.CreateCommand();
-            sqlite_cmd.CommandText = "INSERT INTO SampleTable (Col1, Col2) VALUES('Test Text ', 1); ";
-            sqlite_cmd.ExecuteNonQuery();
-            sqlite_cmd.CommandText = "INSERT INTO SampleTable  (Col1, Col2) VALUES('Test1 Text1 ', 2); ";
-            sqlite_cmd.ExecuteNonQuery();
-            sqlite_cmd.CommandText = "INSERT INTO SampleTable (Col1, Col2) VALUES('Test2 Text2 ', 3); ";
-            sqlite_cmd.ExecuteNonQuery();
-
-            sqlite_cmd.CommandText = "INSERT INTO SampleTable1 (Col1, Col2) VALUES('Test3 Text3 ', 3); ";
+            sqlite_cmd.CommandText = sqlStatement;
             sqlite_cmd.ExecuteNonQuery();
 
         }
@@ -217,13 +219,17 @@ namespace GameApp
             SQLiteDataReader sqlite_datareader;
             SQLiteCommand sqlite_cmd;
             sqlite_cmd = conn.CreateCommand();
-            sqlite_cmd.CommandText = "SELECT * FROM SampleTable";
+            sqlite_cmd.CommandText = "SELECT * FROM GameBoard";
 
             sqlite_datareader = sqlite_cmd.ExecuteReader();
             while (sqlite_datareader.Read())
             {
-                string myreader = sqlite_datareader.GetString(0);
-                Console.WriteLine(myreader);
+               // string myreader = sqlite_datareader.GetString(0);
+                int PropertyID = sqlite_datareader.GetInt16(0);
+                string OwnerName = sqlite_datareader.GetString(1);
+                int propertyValue = sqlite_datareader.GetInt16(2);
+
+                //Console.WriteLine(myreader);
             }
             conn.Close();
         }
